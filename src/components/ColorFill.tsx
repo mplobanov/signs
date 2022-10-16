@@ -22,8 +22,8 @@ export namespace ColorFill {
     return (
       <div
         style={{
-          width: "inherit",
-          height: "inherit",
+          width: "100%",
+          height: "100%",
           backgroundColor: spec.props.color,
         }}
       />

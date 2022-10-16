@@ -1,15 +1,23 @@
 .container {
-    height: inherit;
-    width: inherit;
+    max-height: inherit;
+    width: 100%;
     /*background-color: lime;*/
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 2fr 4fr;
+    height: 100vh;
 }
 
 .form {
-    background-color: rgba(255, 192, 203, 0.2);
+    background-color: rgba(0, 0, 0, 0.02);
+    max-height: inherit;
+}
+
+@media only print {
+    .form {
+        display: none;
+    }
 }
 
 .layout {
-    background-color: rgba(255, 255, 0, 0.3);
+    /*background-color: rgba(255, 255, 0, 0.3);*/
 }

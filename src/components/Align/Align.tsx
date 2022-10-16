@@ -3,6 +3,7 @@ import { Renderer } from "../../renderer/Renderer";
 import React from "react";
 import classes from "./Align.module.css";
 import { Former, Named } from "../../forms/Former";
+import styled from "styled-components";
 
 export namespace Align {
   export interface AlignProps {
@@ -17,6 +18,8 @@ export namespace Align {
     type: "Align";
     props: {
       content: GeneralSpec;
+      horizontal: "flex-start" | "flex-end" | "center";
+      vertical: "flex-start" | "flex-end" | "center";
     };
   }
 
@@ -26,10 +29,20 @@ export namespace Align {
     spec,
     name,
   }) => {
+    const { horizontal, vertical } = spec.props;
+
+    const Container = styled.div`
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: ${vertical};
+      justify-content: ${horizontal};
+    `;
+
     return (
-      <div className={classes.container}>
+      <Container className={classes.container}>
         <Renderer spec={spec.props.content} name={makeName(name)} />
-      </div>
+      </Container>
     );
   };
 

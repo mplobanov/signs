@@ -3,6 +3,9 @@
     flex-direction: column;
     gap: 2rem;
     padding: 40px 30px;
+    overflow: scroll;
+    max-height: inherit;
+    box-sizing: border-box;
 }
 
 .title {

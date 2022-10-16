@@ -7,14 +7,17 @@ export interface InputProps {
 }
 
 export const Input = ({ name, title }: InputProps) => {
-  const [, , helpers] = useField(name);
+  const [input, , helpers] = useField(name);
 
   return (
     <TextField
       onChange={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
         helpers.setValue(e.target.value);
       }}
       label={title}
+      defaultValue={input.value}
     />
   );
 };
