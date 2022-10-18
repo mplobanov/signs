@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Basic } from "./pages/Basic";
-import { Gym } from "./pages/Gym";
-import { Room } from "./pages/Room";
+// import { Basic } from "./pages/Basic";
+// import { Gym } from "./pages/Gym";
+// import { Room } from "./pages/Room";
+import { Galileo } from "./pages/Galileo/Galileo";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,16 +15,16 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Basic />,
+    element: <Galileo />,
   },
-  {
-    path: "/gym",
-    element: <Gym />,
-  },
-  {
-    path: "/room",
-    element: <Room />,
-  },
+  // {
+  //   path: "/gym",
+  //   element: <Gym />,
+  // },
+  // {
+  //   path: "/room",
+  //   element: <Room />,
+  // },
 ]);
 
 root.render(

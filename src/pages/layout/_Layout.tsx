@@ -5,8 +5,9 @@ import React, { useCallback, useState } from "react";
 import { FormLayout } from "../../forms/FormLayout";
 
 export interface LayoutProps {
-  spec: Spec;
+  // spec: Spec;
   formTitle: string;
+  children: React.ReactNode;
 }
 
 export type Value = Record<string, string>;
@@ -23,7 +24,7 @@ export const ValueNames = React.createContext<Names>({
 
 const initialName = "";
 
-export const Layout = ({ spec, formTitle }: LayoutProps) => {
+export const Layout = ({ formTitle, children }: LayoutProps) => {
   const init =
     localStorage.getItem("value") === null
       ? {}
@@ -33,7 +34,11 @@ export const Layout = ({ spec, formTitle }: LayoutProps) => {
   const [names, setNames] = useState<{ name: string; title: string }[]>([]);
 
   const addName = useCallback((newName: { name: string; title: string }) => {
-    setNames((oldNames) => [...oldNames, newName]);
+    setNames((oldNames) => {
+      if (oldNames.some((name) => name.name === newName.name))
+        return [...oldNames];
+      return [...oldNames, newName];
+    });
   }, []);
 
   return (
@@ -46,14 +51,12 @@ export const Layout = ({ spec, formTitle }: LayoutProps) => {
                 localStorage.setItem("value", JSON.stringify(values));
                 setValue(values);
               }}
-              spec={spec}
+              // spec={spec}
               name={initialName}
               formTitle={formTitle}
             />
           </div>
-          <div className={classes.layout}>
-            <Renderer spec={spec} name={initialName} />
-          </div>
+          <div className={classes.layout}>{children}</div>
         </div>
       </ValueNames.Provider>
     </SignContext.Provider>

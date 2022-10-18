@@ -170,6 +170,6 @@ const Centered: Align.Spec = {
   },
 };
 
-export const Gym = () => {
-  return <Layout spec={Centered} formTitle={"Качалка"} />;
-};
+// export const Gym = () => {
+//   return <Layout spec={Centered} formTitle={"Качалка"} />;
+// };

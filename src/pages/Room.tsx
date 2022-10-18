@@ -240,6 +240,6 @@ const Centered: Align.Spec = {
   },
 };
 
-export const Room = () => {
-  return <Layout spec={Centered} formTitle={"Комната"} />;
-};
+// export const Room = () => {
+//   return <Layout spec={Centered} formTitle={"Комната"} />;
+// };

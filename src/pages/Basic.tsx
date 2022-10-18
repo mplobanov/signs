@@ -76,6 +76,6 @@ const Align1: Align.Spec = {
   },
 };
 
-export const Basic = () => {
-  return <Layout spec={Align1} formTitle={"Basic Form"} />;
-};
+// export const Basic = () => {
+//   return <Layout spec={Align1} formTitle={"Basic Form"} />;
+// };

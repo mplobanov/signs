@@ -9,13 +9,13 @@ import { Input } from "./Input";
 
 export interface FormLayoutProps extends Named {
   setValue: React.Dispatch<React.SetStateAction<Value>>;
-  spec: Spec;
+  // spec: Spec;
   formTitle: string;
 }
 
 export const FormLayout = ({
   setValue,
-  spec,
+  // spec,
   name,
   formTitle,
 }: FormLayoutProps) => {
@@ -32,10 +32,10 @@ export const FormLayout = ({
       <Formik initialValues={init} onSubmit={(values) => setValue(values)}>
         {(form) => (
           <div className={classes.body}>
-            {/*{names.names.map((name) => (*/}
-            {/*  <Input name={name.name} title={name.title} />*/}
-            {/*))}*/}
-            <Former spec={spec} name={name} />
+            {names.names.map((name) => (
+              <Input name={name.name} title={name.title} />
+            ))}
+            {/*<Former spec={spec} name={name} />*/}
             <Button onClick={form.submitForm}>Обновить</Button>
           </div>
         )}
