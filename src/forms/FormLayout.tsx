@@ -6,6 +6,8 @@ import { Former, Named } from "./Former";
 import { Button } from "@mui/material";
 import classes from "./FormLayout.module.css";
 import { Input } from "./Input";
+import { useLocation } from "react-router-dom";
+import { useValueKey } from "./useValueKey";
 
 export interface FormLayoutProps extends Named {
   setValue: React.Dispatch<React.SetStateAction<Value>>;
@@ -19,10 +21,12 @@ export const FormLayout = ({
   name,
   formTitle,
 }: FormLayoutProps) => {
+  const key = useValueKey();
+
   const init =
-    localStorage.getItem("value") === null
+    localStorage.getItem(key) === null
       ? {}
-      : JSON.parse(localStorage.getItem("value") as string);
+      : JSON.parse(localStorage.getItem(key) as string);
 
   const names = useContext(ValueNames);
 
@@ -32,9 +36,16 @@ export const FormLayout = ({
       <Formik initialValues={init} onSubmit={(values) => setValue(values)}>
         {(form) => (
           <div className={classes.body}>
-            {names.names.map((name) => (
-              <Input name={name.name} title={name.title} />
-            ))}
+            {names.names
+              .filter((n) => n.lockedText === undefined)
+              .map((name) => (
+                <Input
+                  name={name.name}
+                  title={name.title}
+                  key={name.name}
+                  lockedText={name.lockedText}
+                />
+              ))}
             {/*<Former spec={spec} name={name} />*/}
             <Button onClick={form.submitForm}>Обновить</Button>
           </div>

@@ -8,43 +8,51 @@ import { FaVk } from "@react-icons/all-files/fa/FaVk";
 import { Name } from "./Name";
 import { Decor } from "./Decor";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+`;
+
+interface HeaderProps {
+  length: number;
+}
+
+const Header = styled.span<HeaderProps>`
+  font-size: ${(props) => (props.length > 10 ? 70 : 110)}px;
+  font-weight: 700;
+  //flex-grow: 1;
+  line-height: 0.85;
+  vertical-align: bottom;
+  //word-break: break-all;
+`;
+
+const ManagerSection = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
+const MediaSection = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
 export const Galileo = () => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    position: relative;
-  `;
-
-  const Header = styled.span`
-    font-size: 110px;
-    font-weight: 700;
-    //flex-grow: 1;
-    line-height: 0.85;
-    vertical-align: bottom;
-  `;
-
-  const ManagerSection = styled.div`
-    display: flex;
-    gap: 40px;
-  `;
-
-  const MediaSection = styled.div`
-    display: flex;
-    gap: 20px;
-  `;
-
   return (
     <Layout formTitle={"Galileo"}>
       <SimplePage height={500} width={500 * Math.sqrt(2)}>
         <Container>
-          <Header>
-            <InputWrapper name={"header"} title={"Комната"}>
-              {(text) => <>{text}</>}
-            </InputWrapper>
-          </Header>
-          <Decor />
+          <InputWrapper name={"header"} title={"Комната"}>
+            {(text) => (
+              <>
+                <Header length={text?.length ?? 0}>{text}</Header>
+                <Decor big={(text?.length ?? 0) < 10} />
+              </>
+            )}
+          </InputWrapper>
+
           <ManagerSection>
             <MediaSection>
               <Media

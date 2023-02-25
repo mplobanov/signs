@@ -4,9 +4,10 @@ import { TextField } from "@mui/material";
 export interface InputProps {
   name: string;
   title: string;
+  lockedText?: string;
 }
 
-export const Input = ({ name, title }: InputProps) => {
+export const Input = ({ name, title, lockedText }: InputProps) => {
   const [input, , helpers] = useField(name);
 
   return (
@@ -17,7 +18,8 @@ export const Input = ({ name, title }: InputProps) => {
         helpers.setValue(e.target.value);
       }}
       label={title}
-      defaultValue={input.value}
+      defaultValue={lockedText ?? input.value}
+      disabled={Boolean(lockedText)}
     />
   );
 };

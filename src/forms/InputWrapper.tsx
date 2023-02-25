@@ -5,15 +5,21 @@ export interface InputWrapperProps {
   children: (text?: string) => React.ReactNode;
   name: string;
   title: string;
+  lockedText?: string;
 }
 
-export const InputWrapper = ({ name, title, children }: InputWrapperProps) => {
+export const InputWrapper = ({
+  name,
+  title,
+  children,
+  lockedText,
+}: InputWrapperProps) => {
   const vals = useContext(SignContext);
   const { addName } = useContext(ValueNames);
 
   useEffect(() => {
-    addName({ name, title });
-  }, [addName, name, title]);
+    addName({ name, title, lockedText });
+  }, [addName, lockedText, name, title]);
 
-  return <>{children(vals[name])}</>;
+  return <>{children(lockedText ?? vals[name])}</>;
 };
