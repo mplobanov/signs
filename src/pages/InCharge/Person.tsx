@@ -34,14 +34,17 @@ const Container = styled.div<ContainerProps>`
 `;
 
 const Details = styled.div`
+  --black: rgba(0, 0, 0, 0.8);
+
   width: 100%;
   margin: 15px;
   display: flex;
   flex-direction: column;
   gap: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 5px;
+  background-color: var(--black);
+  padding: 0;
   border-radius: 5px;
+  box-shadow: 0 0 10px 10px var(--black);
 `;
 
 type NameProps = {
