@@ -91,7 +91,7 @@ export const Charges = () => {
       </Options>
       <OptionsHeader>
         <InputWrapper name={"to-whome"} title={"Напишите кому?"}>
-          {(text) => `Напишите ${text}, он вам поможет.`}
+          {(text) => <InputWrapper name={"pronouns"} title={"Кто поможет? Он, она"}>{pronoun => `Напишите ${text}, ${pronoun} вам поможет.`}</InputWrapper>}
         </InputWrapper>
       </OptionsHeader>
     </Container>
